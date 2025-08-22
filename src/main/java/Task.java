@@ -17,6 +17,10 @@ public class Task {
 
     }
 
+    public void undo() {
+        this.isDone = false;
+    }
+
     public String toString() {
         return this.description;
     }
