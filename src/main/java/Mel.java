@@ -33,7 +33,12 @@ public class Mel {
                 StringBuilder output = new StringBuilder();
                 output.append("Here are the tasks in your list:\n ");
                 for (Task task : taskList) {
-                    String taskString = String.format("%d.%s\n ", index, task.toString());
+                    if (index > 1) {
+                        output.append("\n ");
+
+                    }
+
+                    String taskString = String.format("%d.%s", index, task.toString());
                     output.append(taskString);
                     index++;
 
