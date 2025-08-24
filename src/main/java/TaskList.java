@@ -33,6 +33,16 @@ public class TaskList {
 
     }
 
+    public String mark(int index) {
+        return taskList.get(index).markAsDone();
+
+    }
+
+    public String unmark(int index) {
+        return taskList.get(index).undo();
+
+    }
+
     public boolean validIndex(int index) throws MelException.EmptyListException {
         if (taskList.isEmpty()) throw new MelException.EmptyListException();
         return index >= 0 && index < taskList.size();

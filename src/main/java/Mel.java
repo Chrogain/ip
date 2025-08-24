@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 import static java.lang.Integer.parseInt;
 
 public class Mel {
@@ -43,99 +44,116 @@ public class Mel {
         printOut(greeting);
 
         Scanner sc = new Scanner(System.in);
+        outerLoop:
         while (sc.hasNext()) {
             String input = sc.nextLine();
             String[] words = input.split(" ", 2);
             String command = words[0];
+            Command commandE = Command.convert(command);
             String argument = words.length > 1 ? words[1].trim() : "";
             try {
-                if (command.equals("bye")) {
-                    if (argument != "") {
-                        throw new MelException.ExtraArgumentException("bye");
+                switch (commandE) {
+                    case BYE: {
+                        if (argument != "") {
+                            throw new MelException.ExtraArgumentException("bye");
 
-                    } else {
+                        } else {
+                            break outerLoop;
+
+                        }
+
+
+                    }
+                    case LIST: {
+                        if (argument != "") {
+                            throw new MelException.ExtraArgumentException("list");
+
+                        } else {
+                            printOut(taskList.toString());
+
+                        }
+                        break;
+                    }
+
+                    case MARK: {
+                        printOut(taskList.mark(handleIndex(argument)));
+                        break;
+                    }
+
+                    case UNMARK: {
+                        printOut(taskList.unmark(handleIndex(argument)));
+                        break;
+                    }
+
+                    case TODO: {
+                        String desc = input.length() > 5 ? input.substring(5) : "";
+                        if (desc.isEmpty()) {
+                            throw new MelException.NoArgumentFoundException("todo");
+
+                        }
+
+                        printOut(taskList.add(new Todo(desc)));
+                        break;
+
+                    }
+                    case DEADLINE: {
+
+                        String[] desc_and_time = argument.split("/by", 2);
+                        if (desc_and_time.length < 2 || desc_and_time[0] == "" || desc_and_time[1] == "") {
+                            throw new MelException.NoArgumentFoundException("deadline");
+
+                        }
+
+                        String desc = desc_and_time[0].trim();
+                        String by = desc_and_time[1].trim();
+
+                        printOut(taskList.add(new Deadline(desc, by)));
                         break;
 
                     }
 
-                } else if (command.equals("list")) {
-                    if (argument != "") {
-                        throw new MelException.ExtraArgumentException("list");
+                    case EVENT: {
+                        String[] desc_and_time = argument.split("/from", 2);
+                        if (desc_and_time.length < 2 || desc_and_time[0] == "" || desc_and_time[1] == "") {
+                            throw new MelException.NoArgumentFoundException("event");
 
-                    } else {
-                        printOut(taskList.toString());
+                        }
+
+                        String[] fromandto = desc_and_time[1].split("/to", 2);
+                        if (fromandto.length < 2 || fromandto[0] == "" || fromandto[1] == "") {
+                            throw new MelException.NoArgumentFoundException("event");
+
+                        }
+
+                        String desc = desc_and_time[0].trim();
+                        String from = fromandto[0].trim();
+                        String to = fromandto[1].trim();
+
+                        printOut(taskList.add(new Event(desc, from, to)));
+                        break;
+                    }
+
+                    case DELETE: {
+                        printOut(taskList.remove(handleIndex(argument)));
+                        break;
 
                     }
 
-                } else if (command.equals("mark")) {
-                    Task task = taskList.get(handleIndex(argument));
-                    printOut(task.markAsDone());
-
-
-                } else if (command.equals("unmark")) {
-                    Task task = taskList.get(handleIndex(argument));
-                    printOut(task.undo());
-
-                } else if (command.equals("todo")) {
-                    String desc = input.length() > 5 ? input.substring(5) : "";
-                    if (desc.isEmpty()) {
-                        throw new MelException.NoArgumentFoundException("todo");
+                    case NULL: default: {
+                        printOut("Please use the following commands: list, mark, unmark, todo, deadline, event, bye.");
+                        break;
 
                     }
-
-                    Task task = new Todo(desc);
-                    printOut(taskList.add(task));
-
-                } else if (command.equals("deadline")) {
-
-                    String[] desc_and_time = argument.split("/by", 2);
-                    if (desc_and_time.length < 2 || desc_and_time[0] == "" || desc_and_time[1] == "") {
-                        throw new MelException.NoArgumentFoundException("deadline");
-
-                    }
-
-                    String desc = desc_and_time[0].trim();
-                    String by = desc_and_time[1].trim();
-
-                    Task task = new Deadline(desc, by);
-                    printOut(taskList.add(task));
-
-                } else if (command.equals("event")) {
-                    String[] desc_and_time = argument.split("/from", 2);
-                    if (desc_and_time.length < 2 || desc_and_time[0] == "" || desc_and_time[1] == "") {
-                        throw new MelException.NoArgumentFoundException("event");
-
-                    }
-
-                    String[] fromandto = desc_and_time[1].split("/to", 2);
-                    if (fromandto.length < 2 || fromandto[0] == "" || fromandto[1] == "") {
-                        throw new MelException.NoArgumentFoundException("event");
-
-                    }
-
-                    String desc = desc_and_time[0].trim();
-                    String from = fromandto[0].trim();
-                    String to = fromandto[1].trim();
-
-                    Task task = new Event(desc, from, to);
-                    printOut(taskList.add(task));
-
-                } else if (command.equals("delete")) {
-                    printOut(taskList.remove(handleIndex(argument)));
-
-                } else {
-                    printOut("Please use the following commands: list, mark, unmark, todo, deadline, event, bye.");
 
                 }
-
             } catch (MelException e) {
                 printOut(e.getMessage());
 
             }
 
         }
-
         printOut(exit_message);
+
     }
 
 }
