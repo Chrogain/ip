@@ -16,6 +16,13 @@ public class TaskList {
 
     }
 
+    public String remove(int index) {
+        Task task = taskList.remove(index);
+        String output = String.format("OK, I've removed this task:\n  %s\nNow you have %d tasks in the list.", task.toString(), taskList.size());
+        return output;
+
+    }
+
     public int size() {
         return taskList.size();
 

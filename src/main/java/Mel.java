@@ -69,16 +69,12 @@ public class Mel {
 
                 } else if (command.equals("mark")) {
                     Task task = taskList.get(handleIndex(argument));
-                    task.markAsDone();
-                    String output = String.format("Nice! I've marked this task as done:\n  %s", task.toString());
-                    printOut(output);
+                    printOut(task.markAsDone());
 
 
                 } else if (command.equals("unmark")) {
                     Task task = taskList.get(handleIndex(argument));
-                    task.undo();
-                    String output = String.format("OK, I've marked this task as not done yet:\n  %s", task.toString());
-                    printOut(output);
+                    printOut(task.undo());
 
                 } else if (command.equals("todo")) {
                     String desc = input.length() > 5 ? input.substring(5) : "";
@@ -123,6 +119,9 @@ public class Mel {
 
                     Task task = new Event(desc, from, to);
                     printOut(taskList.add(task));
+
+                } else if (command.equals("delete")) {
+                    printOut(taskList.remove(handleIndex(argument)));
 
                 } else {
                     printOut("Please use the following commands: list, mark, unmark, todo, deadline, event, bye.");
