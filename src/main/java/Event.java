@@ -15,4 +15,22 @@ public class Event extends Task {
         return String.format("[E]%s (from: %s to: %s)", super.toString(), this.start, this.end);
 
     }
+
+    @Override
+    public String toSaveString() {
+        return "E" + super.toSaveString() + " | " + start + " | " + end;
+
+    }
+
+    public static Task fromSavedString(String savedString) {
+        String[] saved = savedString.split(" | ");
+        Task task = new Event(saved[2], saved[3], saved[4]);
+        if (saved[1].equals("1")) {
+            task.markAsDone();
+
+        }
+        return task;
+
+    }
+
 }

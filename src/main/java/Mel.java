@@ -1,9 +1,12 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 import static java.lang.Integer.parseInt;
 
 public class Mel {
-    private static TaskList taskList = new TaskList();
+    private static TaskList taskList;
+    private Storage storage;
+
 
     public static void printOut(String input) {
         String line = "_______________________________________________________\n";
@@ -42,6 +45,16 @@ public class Mel {
 
         String exit_message = " Bye! Hope to see you again soon!";
         printOut(greeting);
+
+        Storage storage = new Storage("./data/data.txt");
+        try {
+            taskList = new TaskList(storage.load(), storage);
+
+        } catch (MelException e) {
+            taskList = new TaskList(storage);
+
+        }
+
 
         Scanner sc = new Scanner(System.in);
         outerLoop:

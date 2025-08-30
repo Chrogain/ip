@@ -32,6 +32,31 @@ public abstract class Task {
         return "[" + getStatusIcon() + "] " + this.description;
     }
 
+    public String toSaveString() {
+        String done = isDone ? "1" : "0";
+        return " | " + done + " | " + description;
+
+    }
+
+    public static Task fromSavedString(String savedString) throws MelException{
+        String[] saved = savedString.split(" | ");
+        if (saved.length < 1) {
+            throw new MelException("Saved line is empty!");
+
+        } else if (saved[0].equals("T")) {
+            return Todo.fromSavedString(savedString);
+
+        } else if (saved[0].equals("D")) {
+            return Deadline.fromSavedString(savedString);
+
+        } else if (saved[0].equals("E")) {
+            return Event.fromSavedString(savedString);
+
+        } else {
+            throw new MelException("Error reading saved data!");
+
+        }
+    }
 
 
 }

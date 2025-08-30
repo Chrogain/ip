@@ -12,4 +12,22 @@ public class Todo extends Task {
 
     }
 
+    @Override
+    public String toSaveString() {
+        return "T" + super.toSaveString();
+
+    }
+
+    public static Task fromSavedString(String savedString) {
+        String[] saved = savedString.split(" \\| ");
+
+        Task task = new Todo(saved[2]);
+        if (saved[1].equals("1")) {
+            task.markAsDone();
+
+        }
+        return task;
+
+    }
+
 }

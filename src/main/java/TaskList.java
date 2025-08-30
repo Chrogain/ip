@@ -1,23 +1,38 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TaskList {
     private List<Task> taskList;
+    private Storage storage;
 
-    public TaskList() {
+    public TaskList(Storage storage) {
+        this.storage = storage;
         this.taskList = new ArrayList<>();
 
     }
 
-    public String add(Task task) {
+    public TaskList(String[] savedStrings, Storage storage) throws MelException {
+        this.storage = storage;
+        this.taskList = new ArrayList<>();
+        for (String s : savedStrings) {
+            taskList.add(Task.fromSavedString(s));
+
+        }
+
+    }
+
+    public String add(Task task) throws MelException {
         taskList.add(task);
+        this.update();
         String output = String.format("Got it. I've added this task:\n  %s\n Now you have %d task(s) in the list.", task.toString(), taskList.size());
         return output;
 
     }
 
-    public String remove(int index) {
+    public String remove(int index) throws MelException {
         Task task = taskList.remove(index);
+        this.update();
         String output = String.format("OK, I've removed this task:\n  %s\nNow you have %d tasks in the list.", task.toString(), taskList.size());
         return output;
 
@@ -33,13 +48,17 @@ public class TaskList {
 
     }
 
-    public String mark(int index) {
-        return taskList.get(index).markAsDone();
+    public String mark(int index) throws MelException {
+        String s =  taskList.get(index).markAsDone();
+        this.update();
+        return s;
 
     }
 
-    public String unmark(int index) {
-        return taskList.get(index).undo();
+    public String unmark(int index) throws MelException {
+        String s = taskList.get(index).undo();
+        this.update();
+        return s;
 
     }
 
@@ -47,6 +66,22 @@ public class TaskList {
         if (taskList.isEmpty()) throw new MelException.EmptyListException();
         return index >= 0 && index < taskList.size();
 
+    }
+
+    public void update() throws MelException {
+        List<String> savedStrings = new ArrayList<>();
+        for (Task task : taskList) {
+            savedStrings.add(task.toSaveString());
+
+        }
+
+        try {
+            storage.save(savedStrings.toArray(String[]::new));
+
+        } catch (IOException e) {
+            throw new MelException("File is not saving!");
+
+        }
     }
 
     @Override
