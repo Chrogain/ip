@@ -1,5 +1,9 @@
 import java.io.IOException;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 import static java.lang.Integer.parseInt;
 
@@ -119,8 +123,12 @@ public class Mel {
 
                         String desc = desc_and_time[0].trim();
                         String by = desc_and_time[1].trim();
+                        try {
+                            printOut(taskList.add(new Deadline(desc, LocalDate.parse(by))));
+                        } catch (DateTimeParseException e) {
+                            throw new MelException("Incorrect date format!");
 
-                        printOut(taskList.add(new Deadline(desc, by)));
+                        }
                         break;
 
                     }

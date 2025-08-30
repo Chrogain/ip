@@ -1,7 +1,11 @@
-public class Deadline extends Task {
-    protected String by;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
-    public Deadline(String description, String by) {
+public class Deadline extends Task {
+    protected LocalDate by;
+
+
+    public Deadline(String description, LocalDate by) {
         super(description);
         this.by = by;
 
@@ -10,7 +14,7 @@ public class Deadline extends Task {
 
     @Override
     public String toString() {
-        return String.format("[D]%s (by: %s)", super.toString(), this.by);
+        return String.format("[D]%s (by: %s)", super.toString(), by.format(DateTimeFormatter.ofPattern("MMM d yyyy")));
 
     }
 
@@ -21,8 +25,8 @@ public class Deadline extends Task {
     }
 
     public static Task fromSavedString(String savedString) {
-        String[] saved = savedString.split(" | ");
-        Task task = new Deadline(saved[2], saved[3]);
+        String[] saved = savedString.split(" \\| ");
+        Task task = new Deadline(saved[2], LocalDate.parse(saved[3]));
         if (saved[1].equals("1")) {
             task.markAsDone();
 

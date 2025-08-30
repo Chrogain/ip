@@ -23,7 +23,7 @@ public class Event extends Task {
     }
 
     public static Task fromSavedString(String savedString) {
-        String[] saved = savedString.split(" | ");
+        String[] saved = savedString.split(" \\| ");
         Task task = new Event(saved[2], saved[3], saved[4]);
         if (saved[1].equals("1")) {
             task.markAsDone();
