@@ -1,3 +1,5 @@
+package exceptions;
+
 public class MelException extends Exception {
 
     public MelException(String msg) {
