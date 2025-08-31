@@ -1,3 +1,7 @@
+package tasks;
+
+import exceptions.MelException;
+
 public abstract class Task {
     protected String description;
     protected boolean isDone;
@@ -38,7 +42,7 @@ public abstract class Task {
 
     }
 
-    public static Task fromSavedString(String savedString) throws MelException{
+    public static Task fromSavedString(String savedString) throws MelException {
         String[] saved = savedString.split(" | ");
         if (saved.length < 1) {
             throw new MelException("Saved line is empty!");
