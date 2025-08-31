@@ -31,6 +31,10 @@ public class TaskList {
     }
 
     public String remove(int index) throws MelException {
+        if (!validIndex(index)) {
+            throw new MelException.InvalidIndexException(String.format("It is out of range! Please put a number from 1 to %d.", taskList.size()));
+
+        }
         Task task = taskList.remove(index);
         this.update();
         String output = String.format("OK, I've removed this task:\n  %s\nNow you have %d tasks in the list.", task.toString(), taskList.size());
@@ -49,6 +53,10 @@ public class TaskList {
     }
 
     public String mark(int index) throws MelException {
+        if (!validIndex(index)) {
+            throw new MelException.InvalidIndexException(String.format("It is out of range! Please put a number from 1 to %d.", taskList.size()));
+
+        }
         String s =  taskList.get(index).markAsDone();
         this.update();
         return s;
@@ -56,6 +64,9 @@ public class TaskList {
     }
 
     public String unmark(int index) throws MelException {
+        if (!validIndex(index)) {
+            throw new MelException.InvalidIndexException(String.format("It is out of range! Please put a number from 1 to %d.", taskList.size()));
+        }
         String s = taskList.get(index).undo();
         this.update();
         return s;

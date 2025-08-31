@@ -18,29 +18,6 @@ public class Mel {
 
     }
 
-    public static int handleIndex(String argument) throws MelException {
-        if (argument == "") {
-            throw new MelException.NoArgumentFoundException("index");
-
-        }
-
-        int index;
-        try {
-            index = parseInt(argument) - 1;
-
-        } catch (NumberFormatException e) {
-            throw new MelException.InvalidIndexException("Please input a number instead :)");
-
-        }
-
-        if (!taskList.validIndex(index)) {
-            throw new MelException.InvalidIndexException(String.format("It is out of range! Please put a number from 1 to %d.", taskList.size()));
-
-        }
-
-        return index;
-
-    }
 
     public static void main(String[] args) {
         String line = "_______________________________________________________\n";
@@ -66,7 +43,7 @@ public class Mel {
             String input = sc.nextLine();
             String[] words = input.split(" ", 2);
             String command = words[0];
-            Command commandE = Command.convert(command);
+            Command commandE = Parser.parse(input);
             String argument = words.length > 1 ? words[1].trim() : "";
             try {
                 switch (commandE) {
@@ -93,12 +70,12 @@ public class Mel {
                     }
 
                     case MARK: {
-                        printOut(taskList.mark(handleIndex(argument)));
+                        printOut(taskList.mark(Parser.handleIndex(argument)));
                         break;
                     }
 
                     case UNMARK: {
-                        printOut(taskList.unmark(handleIndex(argument)));
+                        printOut(taskList.unmark(Parser.handleIndex(argument)));
                         break;
                     }
 
@@ -155,7 +132,7 @@ public class Mel {
                     }
 
                     case DELETE: {
-                        printOut(taskList.remove(handleIndex(argument)));
+                        printOut(taskList.remove(Parser.handleIndex(argument)));
                         break;
 
                     }
