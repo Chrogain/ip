@@ -1,5 +1,8 @@
 package mel.exceptions;
 
+/**
+ * Contains all the different types of exceptions for the Mel chatbot
+ */
 public class MelException extends Exception {
 
     public MelException(String msg) {
@@ -7,12 +10,18 @@ public class MelException extends Exception {
 
     }
 
+    /**
+     * Represents the exception when no argument is found for the command
+     */
     public static class NoArgumentFoundException extends MelException {
         public NoArgumentFoundException(String command) {
             super(messager(command));
 
         }
-
+        
+        /**
+         * Changes the exception message according to which command was incorrectly used
+         */
         private static String messager(String command) {
             String message = "You are missing an argument!";
             if (command.equals("index")) {
@@ -31,6 +40,9 @@ public class MelException extends Exception {
         }
     }
 
+    /**
+     * Represents the exception when an invalid index is used
+     */
     public static class InvalidIndexException extends MelException {
         public InvalidIndexException(String msg) {
             super(msg);
@@ -38,6 +50,9 @@ public class MelException extends Exception {
         }
     }
 
+    /**
+     * Represents the exception when an extra argument is used
+     */
     public static class ExtraArgumentException extends MelException {
         public ExtraArgumentException(String command) {
             super("Are you trying to type " + command +  "? Just type " + "\"" + command + "\"" + "!");
@@ -45,6 +60,9 @@ public class MelException extends Exception {
         }
     }
 
+    /**
+     * Represents the exception when using commands when the list is empty
+     */
     public static class EmptyListException extends MelException {
         public EmptyListException() {
             super("List is empty!");

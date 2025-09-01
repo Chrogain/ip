@@ -11,13 +11,20 @@ import mel.tasks.TaskList;
 
 import static java.lang.Integer.parseInt;
 
+/**
+ * This is the Mel Chatbot
+ */
 public class Mel {
     private static Scanner sc = new Scanner(System.in);
     private static TaskList taskList;
     private Storage storage;
     private Ui ui;
 
-
+    /**
+     * Returns the Mel object with the filePath as the parameter for where it should store
+     * the data.
+     * @param filePath
+     */
     public Mel(String filePath) {
         ui = new Ui(sc);
         storage = new Storage("./data/data.txt");
@@ -31,6 +38,9 @@ public class Mel {
 
     }
 
+    /**
+     * Initialises the Mel Chatbot
+     */
     public void run() {
         ui.showGreeting();
         boolean isExit = false;

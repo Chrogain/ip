@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents the list of tasks.
+ */
 public class TaskList {
     private List<Task> taskList;
     private Storage storage;
@@ -16,6 +19,14 @@ public class TaskList {
 
     }
 
+    /**
+     * Returns the object for the taskList class.
+     * Throws an exception when the stored data is empty
+     *
+     * @param savedStrings
+     * @param storage
+     * @throws MelException
+     */
     public TaskList(String[] savedStrings, Storage storage) throws MelException {
         this.storage = storage;
         this.taskList = new ArrayList<>();
@@ -26,6 +37,13 @@ public class TaskList {
 
     }
 
+    /**
+     * Returns the output when a task is added to the task list
+     *
+     * @param task
+     * @return String when task is added to the list of tasks
+     * @throws MelException
+     */
     public String add(Task task) throws MelException {
         taskList.add(task);
         this.update();
@@ -34,6 +52,12 @@ public class TaskList {
 
     }
 
+    /**
+     * Returns the output when a task is removed from the list of tasks.
+     * @param index
+     * @return String when task is removed from the list of tasks
+     * @throws MelException
+     */
     public String remove(int index) throws MelException {
         if (!validIndex(index)) {
             throw new MelException.InvalidIndexException(String.format("It is out of range! Please put a number from 1 to %d.", taskList.size()));
@@ -46,16 +70,35 @@ public class TaskList {
 
     }
 
+    /**
+     * Returns the size of list of tasks.
+     *
+     * @return an integer which is the number of tasks in the list
+     */
     public int size() {
         return taskList.size();
 
     }
 
+    /**
+     * Returns the task at the index specified in the list.
+     *
+     * @param index
+     * @return Task object at index
+     */
     public Task get(int index) {
         return taskList.get(index);
 
     }
 
+    /**
+     * Returns output when a task is marked as done.
+     * Throws exception when index is out of range.
+     *
+     * @param index
+     * @return String when task is marked as done
+     * @throws MelException
+     */
     public String mark(int index) throws MelException {
         if (!validIndex(index)) {
             throw new MelException.InvalidIndexException(String.format("It is out of range! Please put a number from 1 to %d.", taskList.size()));
@@ -67,6 +110,14 @@ public class TaskList {
 
     }
 
+    /**
+     * Returns an output when a task is unmarked.
+     * Throws an exception when index is out of range.
+     *
+     * @param index
+     * @return String when task is unmarked.
+     * @throws MelException
+     */
     public String unmark(int index) throws MelException {
         if (!validIndex(index)) {
             throw new MelException.InvalidIndexException(String.format("It is out of range! Please put a number from 1 to %d.", taskList.size()));
@@ -77,12 +128,26 @@ public class TaskList {
 
     }
 
+    /**
+     * Returns a boolean when checking whether the index is valid.
+     * Throws an exception when the list is empty.
+     *
+     * @param index
+     * @return boolean if index is valid
+     * @throws MelException.EmptyListException
+     */
     public boolean validIndex(int index) throws MelException.EmptyListException {
         if (taskList.isEmpty()) throw new MelException.EmptyListException();
         return index >= 0 && index < taskList.size();
 
     }
 
+    /**
+     * Updates the text file anytime the task list is modified.
+     * Throws an exception when file is not saving properly.
+     *
+     * @throws MelException
+     */
     public void update() throws MelException {
         List<String> savedStrings = new ArrayList<>();
         for (Task task : taskList) {
