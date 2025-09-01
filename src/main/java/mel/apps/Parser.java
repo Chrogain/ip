@@ -9,6 +9,7 @@ import mel.commands.ListCommand;
 import mel.commands.MarkCommand;
 import mel.commands.TaskCommand;
 import mel.commands.UnmarkCommand;
+import mel.commands.FindCommand;
 import mel.exceptions.MelException;
 
 /**
@@ -44,8 +45,10 @@ public class Parser {
             return new TaskCommand(argument, "E");
         case "delete":
             return new DeleteCommand(argument);
+        case "find":
+            return new FindCommand(argument);
         default:
-            throw new MelException("Please use the following commands: list, mark, unmark, todo, deadline, event, delete, bye.");
+            throw new MelException("Please use the following commands: list, mark, unmark, todo, deadline, event, delete, find, bye.");
 
         }
 
