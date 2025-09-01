@@ -1,4 +1,4 @@
-package tasks;
+package mel.tasks;
 
 public class Event extends Task {
 

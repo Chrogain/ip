@@ -1,7 +1,7 @@
-package tasks;
+package mel.tasks;
 
-import apps.Storage;
-import exceptions.MelException;
+import mel.apps.Storage;
+import mel.exceptions.MelException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

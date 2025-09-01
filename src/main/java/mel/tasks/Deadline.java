@@ -1,4 +1,4 @@
-package tasks;
+package mel.tasks;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

@@ -1,4 +1,4 @@
-package apps;
+package mel.apps;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -6,7 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-import exceptions.MelException;
+import mel.exceptions.MelException;
 
 /**
  * Represents the storage of data. A storage object loads tasks from the file

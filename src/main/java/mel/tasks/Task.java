@@ -1,6 +1,6 @@
-package tasks;
+package mel.tasks;
 
-import exceptions.MelException;
+import mel.exceptions.MelException;
 
 public abstract class Task {
     protected String description;

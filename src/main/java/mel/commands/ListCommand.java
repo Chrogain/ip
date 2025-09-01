@@ -1,9 +1,9 @@
-package commands;
+package mel.commands;
 
-import apps.Storage;
-import apps.Ui;
-import exceptions.MelException;
-import tasks.TaskList;
+import mel.apps.Storage;
+import mel.apps.Ui;
+import mel.exceptions.MelException;
+import mel.tasks.TaskList;
 
 public class ListCommand extends Command {
 
