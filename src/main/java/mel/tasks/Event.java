@@ -1,5 +1,8 @@
 package mel.tasks;
 
+/**
+ * Represents the event task
+ */
 public class Event extends Task {
 
     protected String start;
@@ -24,6 +27,12 @@ public class Event extends Task {
 
     }
 
+    /**
+     * Converts the savedString into a event task
+     *
+     * @param savedString
+     * @return Task
+     */
     public static Task fromSavedString(String savedString) {
         String[] saved = savedString.split(" \\| ");
         Task task = new Event(saved[2], saved[3], saved[4]);

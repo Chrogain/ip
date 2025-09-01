@@ -11,11 +11,22 @@ import mel.tasks.Todo;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
+/**
+ * Represents the different types of task commands as one class such as
+ * deadline, todo and event
+ */
 public class TaskCommand extends Command {
 
     private String task;
     private String argument;
 
+    /**
+     * Returns the corresponding task as a Command.
+     * Throws an exception when the argument for the corresponding task is incorrect.
+     * @param argument
+     * @param task
+     * @throws MelException
+     */
     public TaskCommand(String argument, String task) throws MelException {
         this.argument = argument;
         this.task = task;
@@ -54,6 +65,13 @@ public class TaskCommand extends Command {
 
     }
 
+    /**
+     * Prints out the corresponding output for each task
+     * @param tasks
+     * @param ui
+     * @param storage
+     * @throws MelException
+     */
     public void execute(TaskList tasks, Ui ui, Storage storage) throws MelException {
         if (task.equals("T")) {
             ui.printOut(tasks.add(new Todo(argument)));

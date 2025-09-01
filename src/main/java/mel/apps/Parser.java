@@ -5,8 +5,18 @@ import static java.lang.Integer.parseInt;
 import mel.commands.*;
 import mel.exceptions.MelException;
 
+/**
+ * Parser parses the input from the user
+ */
 public class Parser {
 
+    /**
+     * Reads the input from the user and returns the corresponding command.
+     *
+     * @param input
+     * @return Command
+     * @throws MelException
+     */
     public static Command parse(String input) throws MelException {
         String[] words = input.split(" ", 2);
         String command = words[0];
@@ -26,6 +36,14 @@ public class Parser {
 
     }
 
+    /**
+     * Handles the index for the argument to ensure it receives a number instead of no argument
+     * or other arguments
+     *
+     * @param argument
+     * @return int
+     * @throws MelException
+     */
     public static int handleIndex(String argument) throws MelException {
         if (argument == "") {
             throw new MelException.NoArgumentFoundException("index");

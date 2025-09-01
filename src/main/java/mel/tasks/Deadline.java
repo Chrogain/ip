@@ -3,6 +3,9 @@ package mel.tasks;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Represents the deadline task
+ */
 public class Deadline extends Task {
     protected LocalDate by;
 
@@ -26,6 +29,12 @@ public class Deadline extends Task {
 
     }
 
+    /**
+     * Converts the savedString into a todo task
+     *
+     * @param savedString
+     * @return Task
+     */
     public static Task fromSavedString(String savedString) {
         String[] saved = savedString.split(" \\| ");
         Task task = new Deadline(saved[2], LocalDate.parse(saved[3]));
