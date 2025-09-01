@@ -21,14 +21,16 @@ public abstract class Task {
 
     public String markAsDone() {
         this.isDone = true;
-        String output = String.format("Nice! I've marked this task as done:\n  %s", this.toString());
+        String output = String.format("Nice! I've marked this task as done:\n  %s",
+                this.toString());
         return output;
 
     }
 
     public String undo() {
         this.isDone = false;
-        String output = String.format("OK, I've marked this task as not done yet:\n  %s", this.toString());
+        String output = String.format("OK, I've marked this task as not done yet:\n  %s",
+                this.toString());
         return output;
     }
 

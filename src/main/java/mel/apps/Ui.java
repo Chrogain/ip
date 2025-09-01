@@ -1,9 +1,8 @@
 package mel.apps;
 
-import mel.exceptions.MelException;
-
 import java.util.Scanner;
 
+import mel.exceptions.MelException;
 
 public class Ui {
 
@@ -27,8 +26,8 @@ public class Ui {
     }
 
     public void printOut(String input) {
-        String line = "_______________________________________________________\n";
-        System.out.println(line + " " + input + "\n" + line);
+        String LINE = "_______________________________________________________\n";
+        System.out.println(LINE + " " + input + "\n" + LINE);
 
     }
 
