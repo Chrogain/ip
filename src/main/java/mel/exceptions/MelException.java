@@ -55,7 +55,8 @@ public class MelException extends Exception {
      */
     public static class ExtraArgumentException extends MelException {
         public ExtraArgumentException(String command) {
-            super("Are you trying to type " + command +  "? Just type " + "\"" + command + "\"" + "!");
+            super("Are you trying to type " + command
+                    +  "? Just type " + "\"" + command + "\"" + "!");
 
         }
     }

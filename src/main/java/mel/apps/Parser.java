@@ -2,7 +2,13 @@ package mel.apps;
 
 import static java.lang.Integer.parseInt;
 
-import mel.commands.*;
+import mel.commands.ByeCommand;
+import mel.commands.Command;
+import mel.commands.DeleteCommand;
+import mel.commands.ListCommand;
+import mel.commands.MarkCommand;
+import mel.commands.TaskCommand;
+import mel.commands.UnmarkCommand;
 import mel.exceptions.MelException;
 
 /**
@@ -22,15 +28,24 @@ public class Parser {
         String command = words[0];
         String argument = words.length > 1 ? words[1].trim() : "";
         switch (command) {
-            case "bye": return new ByeCommand(argument);
-            case "list": return new ListCommand(argument);
-            case "mark": return new MarkCommand(argument);
-            case "unmark": return new UnmarkCommand(argument);
-            case "todo": return new TaskCommand(argument, "T");
-            case "deadline": return new TaskCommand(argument, "D");
-            case "event": return new TaskCommand(argument, "E");
-            case "delete": return new DeleteCommand(argument);
-            default: throw new MelException("Please use the following commands: list, mark, unmark, todo, deadline, event, delete, bye.");
+        case "bye":
+            return new ByeCommand(argument);
+        case "list":
+            return new ListCommand(argument);
+        case "mark":
+            return new MarkCommand(argument);
+        case "unmark":
+            return new UnmarkCommand(argument);
+        case "todo":
+            return new TaskCommand(argument, "T");
+        case "deadline":
+            return new TaskCommand(argument, "D");
+        case "event":
+            return new TaskCommand(argument, "E");
+        case "delete":
+            return new DeleteCommand(argument);
+        default:
+            throw new MelException("Please use the following commands: list, mark, unmark, todo, deadline, event, delete, bye.");
 
         }
 
@@ -45,7 +60,7 @@ public class Parser {
      * @throws MelException
      */
     public static int handleIndex(String argument) throws MelException {
-        if (argument == "") {
+        if (argument.isEmpty()) {
             throw new MelException.NoArgumentFoundException("index");
 
         }

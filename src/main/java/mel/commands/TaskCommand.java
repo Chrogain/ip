@@ -1,15 +1,18 @@
 package mel.commands;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+
 import mel.apps.Storage;
 import mel.apps.Ui;
+
 import mel.exceptions.MelException;
+
 import mel.tasks.Deadline;
 import mel.tasks.Event;
 import mel.tasks.TaskList;
 import mel.tasks.Todo;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 
 /**
  * Represents the different types of task commands as one class such as
@@ -38,7 +41,9 @@ public class TaskCommand extends Command {
 
         } else if (task.equals("D")) {
             String[] desc_and_time = argument.split("/by", 2);
-            if (desc_and_time.length < 2 || desc_and_time[0].isEmpty() || desc_and_time[1].isEmpty()) {
+            if (desc_and_time.length < 2
+                    || desc_and_time[0].isEmpty()
+                    || desc_and_time[1].isEmpty()) {
                 throw new MelException.NoArgumentFoundException("deadline");
 
             }
@@ -46,13 +51,17 @@ public class TaskCommand extends Command {
 
         } else if (task.equals("E")) {
             String[] desc_and_time = argument.split("/from", 2);
-            if (desc_and_time.length < 2 || desc_and_time[0].isEmpty()|| desc_and_time[1].isEmpty()) {
+            if (desc_and_time.length < 2
+                    || desc_and_time[0].isEmpty()
+                    || desc_and_time[1].isEmpty()) {
                 throw new MelException.NoArgumentFoundException("event");
 
             }
 
             String[] fromandto = desc_and_time[1].split("/to", 2);
-            if (fromandto.length < 2 || fromandto[0].isEmpty() || fromandto[1].isEmpty()) {
+            if (fromandto.length < 2
+                    || fromandto[0].isEmpty()
+                    || fromandto[1].isEmpty()) {
                 throw new MelException.NoArgumentFoundException("event");
 
             }

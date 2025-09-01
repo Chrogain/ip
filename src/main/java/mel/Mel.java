@@ -1,11 +1,14 @@
 package mel;
 
+import java.util.Scanner;
+
 import mel.apps.Parser;
 import mel.apps.Storage;
 import mel.apps.Ui;
+
 import mel.commands.Command;
+
 import mel.exceptions.MelException;
-import java.util.Scanner;
 
 import mel.tasks.TaskList;
 
