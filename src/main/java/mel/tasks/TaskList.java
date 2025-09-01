@@ -5,6 +5,7 @@ import mel.exceptions.MelException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class TaskList {
     private List<Task> taskList;
@@ -74,6 +75,60 @@ public class TaskList {
         String s = taskList.get(index).undo();
         this.update();
         return s;
+
+    }
+
+    /**
+     * Returns a string of the output whether there are matching tasks in the list along with the tasks.
+     *
+     * @param argument
+     * @return
+     * @throws MelException
+     */
+    public String find(String argument) throws MelException {
+        if (taskList.isEmpty()) {
+            throw new MelException.EmptyListException();
+
+        }
+
+        int index = 1;
+        StringBuilder output = new StringBuilder();
+        output.append("Here are the matching tasks in your list:\n ");
+        for (Task task : taskList) {
+            if (hasWord(task.toString(), argument)) {
+                if (index > 1) {
+                    output.append("\n ");
+
+                }
+
+                String taskString = String.format("%d.%s", index, task.toString());
+                output.append(taskString);
+                index++;
+            }
+
+        }
+
+        if (index == 1) {
+            return "There are no matching tasks in your list!";
+
+        }
+
+        return output.toString();
+
+
+    }
+
+    /**
+     * Returns true if the text has the word, case-insensitive
+     *
+     * @param text
+     * @param word
+     * @return
+     */
+    public static boolean hasWord(String text, String word) {
+        return Pattern.compile("\\b" + word + "\\b", Pattern.CASE_INSENSITIVE)
+                .matcher(text)
+                .find();
 
     }
 

@@ -20,7 +20,8 @@ public class Parser {
             case "deadline": return new TaskCommand(argument, "D");
             case "event": return new TaskCommand(argument, "E");
             case "delete": return new DeleteCommand(argument);
-            default: throw new MelException("Please use the following commands: list, mark, unmark, todo, deadline, event, delete, bye.");
+            case "find": return new FindCommand(argument);
+            default: throw new MelException("Please use the following commands: list, mark, unmark, todo, deadline, event, delete, find, bye.");
 
         }
 
