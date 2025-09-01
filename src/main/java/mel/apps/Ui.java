@@ -1,8 +1,8 @@
 package mel.apps;
 
-import mel.exceptions.MelException;
-
 import java.util.Scanner;
+
+import mel.exceptions.MelException;
 
 /**
  * The UI class represents the interface from which the user interacts with and deals
