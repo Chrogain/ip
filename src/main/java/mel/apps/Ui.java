@@ -1,8 +1,7 @@
-package apps;
+package mel.apps;
 
-import exceptions.MelException;
+import mel.exceptions.MelException;
 
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 

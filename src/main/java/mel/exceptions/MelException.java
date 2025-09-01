@@ -1,4 +1,4 @@
-package exceptions;
+package mel.exceptions;
 
 public class MelException extends Exception {
 

@@ -1,9 +1,9 @@
-package commands;
+package mel.commands;
 
-import exceptions.MelException;
-import tasks.TaskList;
-import apps.Ui;
-import apps.Storage;
+import mel.exceptions.MelException;
+import mel.tasks.TaskList;
+import mel.apps.Ui;
+import mel.apps.Storage;
 
 
 public class ByeCommand extends Command {

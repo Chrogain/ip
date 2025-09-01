@@ -1,9 +1,9 @@
-package apps;
+package mel.apps;
 
 import static java.lang.Integer.parseInt;
-import exceptions.MelException;
-import commands.Command;
-import commands.*;
+
+import mel.commands.*;
+import mel.exceptions.MelException;
 
 public class Parser {
 
@@ -20,7 +20,7 @@ public class Parser {
             case "deadline": return new TaskCommand(argument, "D");
             case "event": return new TaskCommand(argument, "E");
             case "delete": return new DeleteCommand(argument);
-            default: throw new MelException("Please use the following commands: list, mark, unmark, todo, deadline, event, bye.");
+            default: throw new MelException("Please use the following commands: list, mark, unmark, todo, deadline, event, delete, bye.");
 
         }
 

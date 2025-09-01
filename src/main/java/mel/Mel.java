@@ -1,10 +1,13 @@
-import apps.Parser;
-import apps.Storage;
-import apps.Ui;
-import exceptions.MelException;
+package mel;
+
+import mel.apps.Parser;
+import mel.apps.Storage;
+import mel.apps.Ui;
+import mel.commands.Command;
+import mel.exceptions.MelException;
 import java.util.Scanner;
-import commands.*;
-import tasks.*;
+
+import mel.tasks.TaskList;
 
 import static java.lang.Integer.parseInt;
 

@@ -1,12 +1,12 @@
-package commands;
+package mel.commands;
 
-import apps.Storage;
-import apps.Ui;
-import exceptions.MelException;
-import tasks.Deadline;
-import tasks.Event;
-import tasks.TaskList;
-import tasks.Todo;
+import mel.apps.Storage;
+import mel.apps.Ui;
+import mel.exceptions.MelException;
+import mel.tasks.Deadline;
+import mel.tasks.Event;
+import mel.tasks.TaskList;
+import mel.tasks.Todo;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
