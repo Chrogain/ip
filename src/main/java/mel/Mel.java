@@ -29,7 +29,7 @@ public class Mel {
      */
     public Mel(String filePath) {
         ui = new Ui(sc);
-        storage = new Storage("./data/data.txt");
+        storage = new Storage(filePath);
         try {
             taskList = new TaskList(storage.load(), storage);
 
@@ -65,8 +65,12 @@ public class Mel {
     }
 
     public static void main(String[] args) {
-        new Mel("data/tasks.txt").run();
+        new Mel("data/data.txt").run();
 
     }
 
+    public String getResponse(String input) {
+        return "hi";
+
+    }
 }
