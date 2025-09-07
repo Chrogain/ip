@@ -12,6 +12,7 @@ import mel.exceptions.MelException;
 public class Ui {
 
     private Scanner sc;
+    private String nextMessage;
 
     /**
      * Constructor for Ui
@@ -51,6 +52,13 @@ public class Ui {
     public void printOut(String input) {
         String line = "_______________________________________________________\n";
         System.out.println(line + " " + input + "\n" + line);
+        this.nextMessage = input;
+
+    }
+
+
+    public String giveNextMessage() {
+        return this.nextMessage;
 
     }
 

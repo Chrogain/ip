@@ -21,6 +21,7 @@ public class Mel {
     private static TaskList taskList;
     private Storage storage;
     private Ui ui;
+    private boolean isExit;
 
     /**
      * Returns the Mel object with the filePath as the parameter for where it should store
@@ -28,8 +29,9 @@ public class Mel {
      * @param filePath
      */
     public Mel(String filePath) {
+        isExit = false;
         ui = new Ui(sc);
-        storage = new Storage("./data/data.txt");
+        storage = new Storage(filePath);
         try {
             taskList = new TaskList(storage.load(), storage);
 
@@ -45,7 +47,6 @@ public class Mel {
      */
     public void run() {
         ui.showGreeting();
-        boolean isExit = false;
 
         while (!isExit) {
             try {
@@ -60,12 +61,37 @@ public class Mel {
             }
         }
 
-        ui.showExit();
 
     }
 
     public static void main(String[] args) {
-        new Mel("data/tasks.txt").run();
+        new Mel("data/data.txt").run();
+
+    }
+
+    public String getResponse(String input) {
+        try {
+            Command c = Parser.parse(input);
+            c.execute(taskList, ui, storage);
+            isExit = c.isExit();
+            return ui.giveNextMessage();
+
+        } catch (MelException e) {
+            ui.printOut(e.getMessage());
+            return ui.giveNextMessage();
+
+        }
+
+    }
+
+    public String initialise() {
+        ui.showGreeting();
+        return ui.giveNextMessage();
+
+    }
+
+    public boolean isExit() {
+        return this.isExit;
 
     }
 

@@ -35,7 +35,7 @@ public class ByeCommand extends Command {
      * @param storage
      */
     public void execute(TaskList tasks, Ui ui, Storage storage) {
-        return;
+        ui.printOut(" Bye! Hope to see you again soon!");
 
     }
 
