@@ -15,6 +15,11 @@ public class DeleteCommand extends Command {
 
     private String argument;
 
+    /**
+     * Constructor for delete command
+     *
+     * @param argument
+     */
     public DeleteCommand(String argument) {
         this.argument = argument;
 

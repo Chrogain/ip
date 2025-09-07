@@ -5,6 +5,11 @@ package mel.exceptions;
  */
 public class MelException extends Exception {
 
+    /**
+     * Constructor for MelException
+     *
+     * @param msg
+     */
     public MelException(String msg) {
         super(msg);
 
@@ -15,14 +20,14 @@ public class MelException extends Exception {
      */
     public static class NoArgumentFoundException extends MelException {
         public NoArgumentFoundException(String command) {
-            super(messager(command));
+            super(editMessage(command));
 
         }
         
         /**
          * Changes the exception message according to which command was incorrectly used
          */
-        private static String messager(String command) {
+        private static String editMessage(String command) {
             String message = "You are missing an argument!";
             if (command.equals("index")) {
                 message = "You need a valid index after the command.";
@@ -56,7 +61,7 @@ public class MelException extends Exception {
     public static class ExtraArgumentException extends MelException {
         public ExtraArgumentException(String command) {
             super("Are you trying to type " + command
-                    +  "? Just type " + "\"" + command + "\"" + "!");
+                    + "? Just type " + "\"" + command + "\"" + "!");
 
         }
     }

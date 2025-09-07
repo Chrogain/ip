@@ -14,6 +14,11 @@ import mel.tasks.TaskList;
 public class UnmarkCommand extends Command {
     private String argument;
 
+    /**
+     * Constructor for unmark command
+     *
+     * @param argument
+     */
     public UnmarkCommand(String argument) {
         this.argument = argument;
 

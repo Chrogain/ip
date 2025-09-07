@@ -7,7 +7,10 @@ import mel.tasks.TaskList;
 import mel.apps.Ui;
 import mel.apps.Storage;
 
-
+/**
+ * Represents the bye command which exits the program
+ *
+ */
 public class ByeCommand extends Command {
 
     /**

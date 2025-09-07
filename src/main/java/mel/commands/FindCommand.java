@@ -13,6 +13,11 @@ import mel.tasks.TaskList;
 public class FindCommand extends Command {
     private String argument;
 
+    /**
+     * Constructor for find command
+     *
+     * @param argument
+     */
     public FindCommand(String argument) {
         this.argument = argument;
 

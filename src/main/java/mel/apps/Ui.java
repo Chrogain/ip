@@ -13,7 +13,12 @@ public class Ui {
 
     private Scanner sc;
 
-    public Ui (Scanner sc) {
+    /**
+     * Constructor for Ui
+     *
+     * @param sc
+     */
+    public Ui(Scanner sc) {
         this.sc = sc;
 
     }
@@ -64,7 +69,7 @@ public class Ui {
      * Prints out the exit message
      */
     public void showExit() {
-        String exit_message = " Bye! Hope to see you again soon!";
-        printOut(exit_message);
+        String exitMessage = " Bye! Hope to see you again soon!";
+        printOut(exitMessage);
     }
 }
