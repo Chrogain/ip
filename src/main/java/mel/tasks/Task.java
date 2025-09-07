@@ -13,6 +13,11 @@ public abstract class Task {
         this.isDone = false;
     }
 
+    /**
+     * Constructor for task
+     *
+     * @param description
+     */
     public Task(String description) {
         this.description = description;
         this.isDone = false;

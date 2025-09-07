@@ -1,11 +1,12 @@
 package mel.tasks;
 
-import mel.apps.Storage;
-import mel.exceptions.MelException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
+
+import mel.apps.Storage;
+import mel.exceptions.MelException;
 
 /**
  * Represents the list of tasks.
@@ -115,6 +116,7 @@ public class TaskList {
                             taskList.size()));
 
         }
+
         String s =  taskList.get(index).markAsDone();
         this.update();
         return s;
@@ -204,7 +206,11 @@ public class TaskList {
      * @throws MelException.EmptyListException
      */
     public boolean validIndex(int index) throws MelException.EmptyListException {
-        if (taskList.isEmpty()) throw new MelException.EmptyListException();
+        if (taskList.isEmpty()) {
+            throw new MelException.EmptyListException();
+
+        }
+
         return index >= 0 && index < taskList.size();
 
     }

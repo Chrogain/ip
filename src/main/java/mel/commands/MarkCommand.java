@@ -14,6 +14,11 @@ import mel.tasks.TaskList;
 public class MarkCommand extends Command {
     private String argument;
 
+    /**
+     * Constructor for mark command
+     *
+     * @param argument
+     */
     public MarkCommand(String argument) {
         this.argument = argument;
 

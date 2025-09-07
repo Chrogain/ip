@@ -12,7 +12,6 @@ import mel.exceptions.MelException;
 
 import mel.tasks.TaskList;
 
-import static java.lang.Integer.parseInt;
 
 /**
  * This is the Mel Chatbot
@@ -48,7 +47,7 @@ public class Mel {
         ui.showGreeting();
         boolean isExit = false;
 
-        while(!isExit) {
+        while (!isExit) {
             try {
                 String fullCommand = ui.readCommand();
                 Command c = Parser.parse(fullCommand);

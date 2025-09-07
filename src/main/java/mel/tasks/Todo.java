@@ -2,6 +2,11 @@ package mel.tasks;
 
 public class Todo extends Task {
 
+    /**
+     * Constructor for todo task
+     *
+     * @param description
+     */
     public Todo(String description) {
         super(description);
 
@@ -20,6 +25,12 @@ public class Todo extends Task {
 
     }
 
+    /**
+     * Converts the saved string into a todo task
+     *
+     * @param savedString
+     * @return
+     */
     public static Task fromSavedString(String savedString) {
         String[] saved = savedString.split(" \\| ");
 

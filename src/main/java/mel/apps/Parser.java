@@ -5,11 +5,12 @@ import static java.lang.Integer.parseInt;
 import mel.commands.ByeCommand;
 import mel.commands.Command;
 import mel.commands.DeleteCommand;
+import mel.commands.FindCommand;
 import mel.commands.ListCommand;
 import mel.commands.MarkCommand;
 import mel.commands.TaskCommand;
 import mel.commands.UnmarkCommand;
-import mel.commands.FindCommand;
+
 import mel.exceptions.MelException;
 
 /**
@@ -48,7 +49,8 @@ public class Parser {
         case "find":
             return new FindCommand(argument);
         default:
-            throw new MelException("Please use the following commands: list, mark, unmark, todo, deadline, event, delete, find, bye.");
+            throw new MelException("Please use the following commands: list, " +
+                    "mark, unmark, todo, deadline, event, delete, find, bye.");
 
         }
 
