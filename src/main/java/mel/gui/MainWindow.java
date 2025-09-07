@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
+import javafx.stage.Stage;
 import mel.Mel;
 /**
  * Controller for the main GUI.
@@ -23,6 +24,7 @@ public class MainWindow extends AnchorPane {
     private Button sendButton;
 
     private Mel mel;
+    private boolean isExit;
 
     private Image userImage = new Image(this.getClass().getResourceAsStream("/images/user.png"));
     private Image melImage = new Image(this.getClass().getResourceAsStream("/images/mel.png"));
@@ -35,6 +37,8 @@ public class MainWindow extends AnchorPane {
     /** Injects the Duke instance */
     public void setMel(Mel m) {
         mel = m;
+
+        sendMessage(mel.initialise());
     }
 
     /**
@@ -45,10 +49,24 @@ public class MainWindow extends AnchorPane {
     private void handleUserInput() {
         String input = userInput.getText();
         String response = mel.getResponse(input);
+
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
-                DialogBox.getDukeDialog(response, melImage)
+                DialogBox.getMelDialog(response, melImage)
         );
         userInput.clear();
+
+        if (mel.isExit()) {
+            Stage stage = (Stage) sendButton.getScene().getWindow();
+            stage.close();
+
+        }
+    }
+
+    @FXML
+    private void sendMessage(String msg) {
+        dialogContainer.getChildren().add(
+                DialogBox.getMelDialog(msg, melImage)
+        );
     }
 }
