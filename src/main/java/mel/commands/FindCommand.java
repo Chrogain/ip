@@ -32,7 +32,7 @@ public class FindCommand extends Command {
      * @throws MelException
      */
     public void execute(TaskList tasks, Ui ui, Storage storage) throws MelException {
-        ui.printOut(tasks.find(argument));
+        ui.printOut(tasks.findTask(argument));
 
     }
 

@@ -152,7 +152,7 @@ public class TaskList {
      * @return
      * @throws MelException
      */
-    public String find(String argument) throws MelException {
+    public String findTask(String argument) throws MelException {
         if (taskList.isEmpty()) {
             throw new MelException.EmptyListException();
 
@@ -184,6 +184,7 @@ public class TaskList {
 
 
     }
+
 
     /**
      * Returns true if the text has the word, case-insensitive
