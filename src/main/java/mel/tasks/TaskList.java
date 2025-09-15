@@ -30,6 +30,7 @@ public class TaskList {
      * @throws MelException
      */
     public TaskList(String[] savedStrings, Storage storage) throws MelException {
+        assert storage != null;
         this.storage = storage;
         this.taskList = new ArrayList<>();
         for (String s : savedStrings) {
@@ -47,6 +48,7 @@ public class TaskList {
      * @throws MelException
      */
     public String add(Task task) throws MelException {
+        assert task != null;
         taskList.add(task);
         this.update();
         String output = String.format(

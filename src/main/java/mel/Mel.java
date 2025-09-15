@@ -29,6 +29,7 @@ public class Mel {
      * @param filePath
      */
     public Mel(String filePath) {
+        assert filePath != null;
         isExit = false;
         ui = new Ui(sc);
         storage = new Storage(filePath);
