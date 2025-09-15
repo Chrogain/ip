@@ -34,6 +34,16 @@ public abstract class Task {
     }
 
     /**
+     * Set a new description for the task
+     *
+     * @param description
+     */
+    public void setDescription(String description) {
+        this.description = description;
+
+    }
+
+    /**
      * Returns the output when a task is marked as done.
      *
      * @return output when task is marked done

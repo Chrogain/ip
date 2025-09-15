@@ -52,4 +52,24 @@ public class Event extends Task {
 
     }
 
+    /**
+     * Changes the start time for the event task
+     *
+     * @param newValue
+     */
+    public void setStart(String newValue) {
+        this.startTime = newValue;
+
+    }
+
+    /**
+     * Changes the end time for the event task
+     *
+     * @param newValue
+     */
+    public void setEnd(String newValue) {
+        this.endTime = newValue;
+
+    }
+
 }
