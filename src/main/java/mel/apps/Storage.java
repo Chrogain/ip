@@ -35,6 +35,7 @@ public class Storage {
      * @throws IOException
      */
     public void save(String[] stringsToSave) throws IOException {
+        assert filePath != null;
         FileWriter fw = new FileWriter(filePath.toFile());
         for (String s : stringsToSave) {
             fw.write(s + System.lineSeparator());
