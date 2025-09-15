@@ -65,7 +65,7 @@ public class TaskList {
      * @throws MelException
      */
     public String remove(int index) throws MelException {
-        if (!validIndex(index)) {
+        if (!isValidIndex(index)) {
             throw new MelException.InvalidIndexException(
                     String.format(
                             "It is out of range! Please put a number from 1 to %d.",
@@ -111,7 +111,7 @@ public class TaskList {
      * @throws MelException
      */
     public String mark(int index) throws MelException {
-        if (!validIndex(index)) {
+        if (!isValidIndex(index)) {
             throw new MelException.InvalidIndexException(
                     String.format(
                             "It is out of range! Please put a number from 1 to %d.",
@@ -134,7 +134,7 @@ public class TaskList {
      * @throws MelException
      */
     public String unmark(int index) throws MelException {
-        if (!validIndex(index)) {
+        if (!isValidIndex(index)) {
             throw new MelException.InvalidIndexException(
                     String.format("It is out of range! Please put a number from 1 to %d.",
                             taskList.size()));
@@ -207,7 +207,7 @@ public class TaskList {
      * @return boolean if index is valid
      * @throws MelException.EmptyListException
      */
-    public boolean validIndex(int index) throws MelException.EmptyListException {
+    public boolean isValidIndex(int index) throws MelException.EmptyListException {
         if (taskList.isEmpty()) {
             throw new MelException.EmptyListException();
 

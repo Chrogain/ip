@@ -5,33 +5,33 @@ package mel.tasks;
  */
 public class Event extends Task {
 
-    protected String start;
-    protected String end;
+    protected String startTime;
+    protected String endTime;
 
     /**
      * Constructor for event task
      *
      * @param description
-     * @param start
-     * @param end
+     * @param startTime
+     * @param endTime
      */
-    public Event(String description, String start, String end) {
+    public Event(String description, String startTime, String endTime) {
         super(description);
-        this.start = start;
-        this.end = end;
+        this.startTime = startTime;
+        this.endTime = endTime;
 
     }
 
     @Override
     public String toString() {
         return String.format("[E]%s (from: %s to: %s)",
-                super.toString(), this.start, this.end);
+                super.toString(), this.startTime, this.endTime);
 
     }
 
     @Override
     public String toSaveString() {
-        return "E" + super.toSaveString() + " | " + start + " | " + end;
+        return "E" + super.toSaveString() + " | " + startTime + " | " + endTime;
 
     }
 
