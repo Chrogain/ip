@@ -36,7 +36,7 @@ public class Deadline extends Task {
     }
 
     /**
-     * Converts the savedString into a todo task
+     * Converts the savedString into a deadline task
      *
      * @param savedString
      * @return Task
@@ -49,6 +49,16 @@ public class Deadline extends Task {
 
         }
         return task;
+
+    }
+
+    /**
+     * Changes the date for this task
+     *
+     * @param date
+     */
+    public void setDate(LocalDate date) {
+        this.date = date;
 
     }
 }
