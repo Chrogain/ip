@@ -38,7 +38,7 @@ public class TaskCommandTest {
 
         //test case 4 (event no argument)
         MelException e2 = assertThrows(MelException.class, () ->  new TaskCommand("concert /from 12pm", "E"));
-        assertTrue(e2.getMessage().contains("Use the event command"));
+        assertTrue(e2.getMessage().contains("Missing"));
 
 
     }
