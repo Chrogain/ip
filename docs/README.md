@@ -6,6 +6,22 @@
 Bored and want to have someone like Mel manage your tasks? :grin:
 ### Look no further for MEL is here
 
+## Command Summary
+| Action       | Format, Examples                                                                           |
+|--------------|--------------------------------------------------------------------------------------------|
+| **Todo**     | `todo d/DESCRIPTION`                                                                       |
+| **Deadline** | `deadline d/DESCRIPTION d//by DATE`<br/> e.g., `deadline drink milo /by 2pm`               |
+| **Event**    | `event d/DESCRIPTION s//from START e//to END`<br/> e.g., `event concert /from 1pm /to 3pm` 
+| **List**     | `list`                                                                                     
+| **Delete**   | `delete INDEX` <br/> e.g.,`delete 3`                                                       
+| **Mark**     | `mark INDEX` <br/> e.g., `mark 2`                                                          
+| **Unmark**   | `unmark INDEX` <br/> e.g., `unmark 2`                                                      
+| **Update**   | `update INDEX u/UPDATE_TYPE v/VALUE` <br/> e.g., `update 2 date 2003-12-12`                
+| **Find**     | `find i/INPUT` <br/> e.g., `find albert`                                                   
+| **Bye**      | `bye`                                                                                     
+
+ 
+
 ## Adding todos
 
 You can add todo tasks into your task list!
